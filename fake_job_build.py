@@ -18,6 +18,7 @@ from sklearn.metrics import confusion_matrix
 from sklearn.utils import resample
 from sklearn.metrics import accuracy_score
 from sklearn.externals import joblib
+from sklearn.metrics import confusion_matrix
 
 # Importing the dataset
 dataset = pd.read_csv('fake_job_postings.csv')
@@ -77,6 +78,9 @@ classifier.fit(X_train, y_train)
 
 # Predicting the Test set results
 y_pred = classifier.predict(X_test)
+
+# Evaluate the model 
+cm = confusion_matrix(y_test, y_pred)
 
 # Save the model
 joblib.dump(classifier, 'fake_job.pkl') 
